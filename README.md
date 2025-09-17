@@ -22,11 +22,13 @@ A RESTful API for managing books and borrowing records using PHP Slim Framework 
 ## Quick Start
 
 ### 1. Install Dependencies
+
 ```bash
 composer install
 ```
 
 ### 2. Database Setup
+
 ```bash
 # Create database
 mysql -u root -p -e "CREATE DATABASE bookdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
@@ -40,11 +42,13 @@ mysql -u root -p bookdb < sql/sample-data.sql
 ```
 
 ### 3. Start Development Server
+
 ```bash
 php -S localhost:8000 -t public
 ```
 
 ### 4. Test the API
+
 ```bash
 php test-api.php
 ```
@@ -52,21 +56,27 @@ php test-api.php
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/token` - Get OAuth2 access token
 
 ### Books
+
 - `GET /api/books` - Get all books
 - `POST /api/books` - Create a new book
 - `POST /api/books/{id}/borrow` - Borrow a book
 
 ### Analytics
-- `GET /api/analytics/books` - Get book analytics
+
+- `GET api/analytics/latest-borrow-per-book` - Latest borrow per book
+- `GET api/analytics/borrow-rank-per-user` - User borrowing rankings
+- `GET api/analytics/book-summary` - Book statistics
 
 ## Testing
 
 ### Manual Testing with cURL
 
 1. **Get Access Token:**
+
 ```bash
 curl -X POST http://localhost:8000/api/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
@@ -74,6 +84,7 @@ curl -X POST http://localhost:8000/api/token \
 ```
 
 2. **Create a Book:**
+
 ```bash
 curl -X POST http://localhost:8000/api/books \
   -H "Content-Type: application/json" \
@@ -82,13 +93,16 @@ curl -X POST http://localhost:8000/api/books \
 ```
 
 3. **Get All Books:**
+
 ```bash
 curl -X GET http://localhost:8000/api/books \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
 ```
 
 ### Automated Testing
+
 Run the test script:
+
 ```bash
 php test-api.php
 ```
@@ -96,6 +110,7 @@ php test-api.php
 ## Configuration
 
 ### Environment Variables (.env)
+
 ```env
 DB_HOST=127.0.0.1
 DB_NAME=bookdb
@@ -110,14 +125,17 @@ LOG_LEVEL=INFO
 ```
 
 ### Default OAuth2 Client
+
 - Client ID: `test-client`
 - Client Secret: `password`
 
 ### Test User Credentials
+
 - Username: `testuser`
 - Password: `password`
 
 ## Project Structure
+
 ```
 ├── public/
 │   └── index.php          # Application entry point
